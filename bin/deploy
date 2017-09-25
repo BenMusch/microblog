@@ -15,4 +15,4 @@ yes | mix release --env=prod
 
 sshpass -p $PASSWORD scp _build/prod/rel/microblog/releases/0.0.1/microblog.tar.gz ben@$SERVER_IP:~/www/microblog
 sshpass -p $PASSWORD ssh ben@$SERVER_IP \
-  'cd ~/www/microblog; tar xzvf microblog.tar.gz; PORT=8000 ./bin/microblog restart'
+  'cd ~/www/microblog; tar xzvf microblog.tar.gz; export PORT=8000; ./bin/microblog migrate; ./bin/microblog restart'
