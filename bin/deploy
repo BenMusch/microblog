@@ -6,6 +6,8 @@ export MIX_ENV=prod
 sshpass -p $PASSWORD scp ben@$SERVER_IP:~/www/microblog-config/prod.secret.exs ./config/prod.secret.exs
 
 # create release
+npm install
+./node_modules/brunch/bin/brunch b -p
 yes | mix phx.digest
 yes | mix release --env=prod
 
