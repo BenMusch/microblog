@@ -6,6 +6,7 @@ export MIX_ENV=prod
 sshpass -p $PASSWORD scp ben@$SERVER_IP:~/www/microblog-config/prod.secret.exs ./config/prod.secret.exs
 
 # create release
+yes | mix phx.digest
 yes | mix release --env=prod
 
 sshpass -p $PASSWORD scp _build/prod/rel/microblog/releases/0.0.1/microblog.tar.gz ben@$SERVER_IP:~/www/microblog
