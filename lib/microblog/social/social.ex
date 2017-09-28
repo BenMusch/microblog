@@ -1,12 +1,12 @@
-defmodule Microblog.Messages do
+defmodule Microblog.Social do
   @moduledoc """
-  The Messages context.
+  The Social context.
   """
 
   import Ecto.Query, warn: false
   alias Microblog.Repo
 
-  alias Microblog.Messages.Message
+  alias Microblog.Social.Message
 
   @doc """
   Returns the list of messages.

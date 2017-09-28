@@ -1,13 +1,13 @@
 defmodule MicroblogWeb.MessageControllerTest do
   use MicroblogWeb.ConnCase
 
-  alias Microblog.Messages
+  alias Microblog.Social
 
   @create_attrs %{content: "some content"}
   @invalid_attrs %{content: nil}
 
   def fixture(:message) do
-    {:ok, message} = Messages.create_message(@create_attrs)
+    {:ok, message} = Social.create_message(@create_attrs)
     message
   end
 

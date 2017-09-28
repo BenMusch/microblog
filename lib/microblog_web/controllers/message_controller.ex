@@ -1,22 +1,22 @@
 defmodule MicroblogWeb.MessageController do
   use MicroblogWeb, :controller
 
-  alias Microblog.Messages
-  alias Microblog.Messages.Message
+  alias Microblog.Social
+  alias Microblog.Social.Message
 
   def index(conn, _params) do
-    changeset = Messages.change_message(%Message{})
-    messages = Messages.list_messages()
+    changeset = Social.change_message(%Message{})
+    messages = Social.list_messages()
     render(conn, "index.html", messages: messages, changeset: changeset)
   end
 
   def new(conn, _params) do
-    changeset = Messages.change_message(%Message{})
+    changeset = Social.change_message(%Message{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"message" => message_params}) do
-    case Messages.create_message(message_params) do
+    case Social.create_message(message_params) do
       {:ok, message} ->
         conn
         |> put_flash(:info, "Message created successfully.")
@@ -27,13 +27,13 @@ defmodule MicroblogWeb.MessageController do
   end
 
   def show(conn, %{"id" => id}) do
-    message = Messages.get_message!(id)
+    message = Social.get_message!(id)
     render(conn, "show.html", message: message)
   end
 
   def delete(conn, %{"id" => id}) do
-    message = Messages.get_message!(id)
-    {:ok, _message} = Messages.delete_message(message)
+    message = Social.get_message!(id)
+    {:ok, _message} = Social.delete_message(message)
 
     conn
     |> put_flash(:info, "Message deleted successfully.")

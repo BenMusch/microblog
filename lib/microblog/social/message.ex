@@ -1,7 +1,7 @@
-defmodule Microblog.Messages.Message do
+defmodule Microblog.Social.Message do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Microblog.Messages.Message
+  alias Microblog.Social.Message
 
 
   schema "messages" do
