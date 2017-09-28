@@ -1,5 +1,5 @@
-<h2>New Message</h2>
+<div class="container col-6 col-offset-3">
+  <h2>Create a New Message</h2>
 
-<%= render "form.html", Map.put(assigns, :action, message_path(@conn, :create)) %>
-
-<span><%= link "Back", to: message_path(@conn, :index) %></span>
+  <%= render "form.html", Map.merge(assigns, %{action: message_path(@conn, :create), rows: 5}) %>
+</div>

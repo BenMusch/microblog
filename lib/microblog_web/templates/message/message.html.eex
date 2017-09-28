@@ -1,0 +1,26 @@
+<div class="row message item">
+  <div class="col-md-1">
+    <div class="avatar-container-sm panel">
+      <img src="https://help.github.com/assets/images/help/profile/identicon.png"
+          alt="avatar"/>
+    </div>
+  </div>
+
+  <div class="col-md-11 content">
+    <p><%= @message.content %></p>
+
+    <span class="metadata">
+      <a href="#" class="name">
+        <strong>User Name</strong>
+        @handle
+      </a>
+
+      <small>
+        <%= link @message.inserted_at, to: message_path(@conn, :show, @message) %>
+        <%= link "Delete", to: message_path(@conn, :delete, @message), method: :delete,
+                           data: [confirm: "Are you sure?"],
+                           class: "text-danger" %>
+      </small>
+    </span>
+  </div>
+</div>

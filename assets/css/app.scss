@@ -1,0 +1,122 @@
+/* This file is for your main application css. */
+@import "bootstrap";
+
+.navbar {
+  margin-bottom: 1.5em;
+}
+
+.page-header {
+  margin-bottom: 1.5em;
+  border-bottom: 0.05em solid #eee;
+}
+
+.page-header small {
+  color: #777;
+  font-size: 0.6em;
+}
+
+/*********************
+ * Large avatar styles
+ *********************
+ */
+.avatar-container {
+  width: 10em;
+  height: 10em;
+  padding: 1em;
+}
+
+.avatar-container img {
+  width: 8em;
+  height: 8em;
+}
+
+/*********************
+ * Small avatar styles
+ *********************
+ */
+
+.avatar-conatiner-sm {
+  width: 5em;
+  height: 5em;
+  padding: 0.5em;
+}
+
+.avatar-container-sm img {
+  width: 4.5em;
+  height: 4.5em;
+}
+
+/*****************************
+ * User data styles -- generic
+ *****************************
+ */
+
+.user-data {
+  list-style: none;
+  float: left;
+}
+
+.user-data li {
+  display: block;
+  float: left;
+}
+
+/***************************
+ * User data styles -- large
+ ***************************
+ */
+
+.card .btn-group a {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+
+/*********************
+ * General list styles
+ *********************
+ */
+
+.item {
+  margin-bottom: 1em;
+  border-bottom: 0.1em solid #eee;
+}
+
+.item .name strong {
+  color: #333;
+}
+
+.item .name {
+  color: #777;
+}
+
+/*****************
+ * Messages styles
+ *****************
+ */
+
+.message .content {
+  padding-left: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.message .content p {
+  font-size: 1.3em;
+}
+
+/******************
+ * User list styles
+ ******************
+ */
+
+.user .name {
+  font-size: 1.2em;
+}
+
+/************************************
+ * Confusing fix for message-new form
+ ************************************
+ */
+
+.new-msg {
+  width: 100%;
+}

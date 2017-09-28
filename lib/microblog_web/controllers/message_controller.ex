@@ -5,8 +5,9 @@ defmodule MicroblogWeb.MessageController do
   alias Microblog.Messages.Message
 
   def index(conn, _params) do
+    changeset = Messages.change_message(%Message{})
     messages = Messages.list_messages()
-    render(conn, "index.html", messages: messages)
+    render(conn, "index.html", messages: messages, changeset: changeset)
   end
 
   def new(conn, _params) do
@@ -28,25 +29,6 @@ defmodule MicroblogWeb.MessageController do
   def show(conn, %{"id" => id}) do
     message = Messages.get_message!(id)
     render(conn, "show.html", message: message)
-  end
-
-  def edit(conn, %{"id" => id}) do
-    message = Messages.get_message!(id)
-    changeset = Messages.change_message(message)
-    render(conn, "edit.html", message: message, changeset: changeset)
-  end
-
-  def update(conn, %{"id" => id, "message" => message_params}) do
-    message = Messages.get_message!(id)
-
-    case Messages.update_message(message, message_params) do
-      {:ok, message} ->
-        conn
-        |> put_flash(:info, "Message updated successfully.")
-        |> redirect(to: message_path(conn, :show, message))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", message: message, changeset: changeset)
-    end
   end
 
   def delete(conn, %{"id" => id}) do

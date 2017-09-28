@@ -6,12 +6,13 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :content, class: "control-label" %>
-    <%= textarea f, :content, class: "form-control" %>
+    <%= textarea f, :content,
+                    class: "form-control", rows: @rows,
+                    placeholder: "Write your message..." %>
     <%= error_tag f, :content %>
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit "Post my message!", class: "btn btn-primary btn-actions" %>
   </div>
 <% end %>
