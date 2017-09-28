@@ -5,6 +5,8 @@
     </div>
   <% end %>
 
+  <%= hidden_input f, :user_id, value: 1 %>
+
   <div class="form-group">
     <%= textarea f, :content,
                     class: "form-control", rows: @rows,

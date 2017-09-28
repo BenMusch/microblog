@@ -8,11 +8,11 @@
 .page-header {
   margin-bottom: 1.5em;
   border-bottom: 0.05em solid #eee;
-}
 
-.page-header small {
-  color: #777;
-  font-size: 0.6em;
+  small {
+    color: #777;
+    font-size: 0.6em;
+  }
 }
 
 /*********************
@@ -23,11 +23,11 @@
   width: 10em;
   height: 10em;
   padding: 1em;
-}
 
-.avatar-container img {
-  width: 8em;
-  height: 8em;
+  img {
+    width: 8em;
+    height: 8em;
+  }
 }
 
 /*********************
@@ -46,29 +46,18 @@
   height: 4.5em;
 }
 
-/*****************************
- * User data styles -- generic
- *****************************
+/***********
+ * User show
+ ***********
  */
 
-.user-data {
-  list-style: none;
-  float: left;
-}
-
-.user-data li {
-  display: block;
-  float: left;
-}
-
-/***************************
- * User data styles -- large
- ***************************
- */
-
-.card .btn-group a {
+.card .name {
   margin-top: 0.5em;
-  font-size: 0.9em;
+  font-size: 1em;
+
+  strong {
+    font-size: 1.3em;
+  }
 }
 
 /*********************
@@ -81,14 +70,6 @@
   border-bottom: 0.1em solid #eee;
 }
 
-.item .name strong {
-  color: #333;
-}
-
-.item .name {
-  color: #777;
-}
-
 /*****************
  * Messages styles
  *****************
@@ -97,10 +78,10 @@
 .message .content {
   padding-left: 1.5em;
   padding-bottom: 0.5em;
-}
 
-.message .content p {
-  font-size: 1.3em;
+  p {
+    font-size: 1.3em;
+  }
 }
 
 /******************

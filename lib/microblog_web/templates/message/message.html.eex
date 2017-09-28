@@ -10,10 +10,7 @@
     <p><%= @message.content %></p>
 
     <span class="metadata">
-      <a href="#" class="name">
-        <strong>User Name</strong>
-        @handle
-      </a>
+      <%= render MicroblogWeb.UserView, "title.html", user: @message.user, conn: @conn %>
 
       <small>
         <%= link @message.inserted_at, to: message_path(@conn, :show, @message) %>

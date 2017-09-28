@@ -1,0 +1,3 @@
+<%= for user <- @users do %>
+  <%= render "user.html", Map.put(assigns, :user, user) %>
+<% end %>

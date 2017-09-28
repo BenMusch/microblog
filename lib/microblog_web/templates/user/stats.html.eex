@@ -1,0 +1,5 @@
+<div class="btn-group">
+  <%= link "100 Followers", to: "#", class: "btn btn-light" %>
+  <%= link "54 Following", to: "#", class: "btn btn-light" %>
+  <%= link "Follow", to: "#", class: "btn btn-primary" %>
+</div>

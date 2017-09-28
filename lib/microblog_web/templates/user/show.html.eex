@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="avatar-container">
+        <img
+            src="https://help.github.com/assets/images/help/profile/identicon.png"
+            alt="avatar"/>
+      </div>
+
+      <div class="card-body">
+        <%= render "title.html", user: @user, conn: @conn %>
+        <%= render "stats.html" %>
+      </div>
+    </div>
+    <span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
+  </div>
+
+  <div class="col-8">
+    <h3><%= @user.human_name %>'s Messages</h3>
+
+    <hr>
+
+    <%= for message <- @messages do %>
+      <%= render MicroblogWeb.MessageView, "message.html", Map.put(assigns, :message, message) %>
+    <% end %>
+  </div>
+</div>

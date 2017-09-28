@@ -1,0 +1,17 @@
+<div class="row user item">
+  <div class="col-md-1">
+    <div class="avatar-container-sm panel">
+      <img
+          src="https://help.github.com/assets/images/help/profile/identicon.png"
+          alt="avatar"/>
+    </div>
+  </div>
+
+  <div class="col-md-11 content">
+    <div class="row">
+      <%= render "title.html", user: @user, conn: @conn %>
+    </div>
+
+    <%= render "stats.html" %>
+  </div>
+</div>
