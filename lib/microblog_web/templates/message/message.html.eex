@@ -14,7 +14,7 @@
 
       <small>
         <%= link @message.inserted_at, to: message_path(@conn, :show, @message) %>
-        <%= if @current_user.id == @message.user_id do %>
+        <%= if MicroblogWeb.UserView.users_equal?(@current_user, @message.user) do %>
           <%= link "Delete", to: message_path(@conn, :delete, @message), method: :delete,
                             data: [confirm: "Are you sure?"],
                             class: "text-danger" %>
