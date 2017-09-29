@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <%= MicroblogWeb.UserView.users_equal?(@user, @current_user) do %>
+    <%= if MicroblogWeb.UserView.users_equal?(@user, @current_user) do %>
       <span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
     <% end %>
   </div>
