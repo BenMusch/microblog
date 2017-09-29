@@ -14,9 +14,11 @@
 
       <small>
         <%= link @message.inserted_at, to: message_path(@conn, :show, @message) %>
-        <%= link "Delete", to: message_path(@conn, :delete, @message), method: :delete,
-                           data: [confirm: "Are you sure?"],
-                           class: "text-danger" %>
+        <%= if @current_user.id == @message.user_id do %>
+          <%= link "Delete", to: message_path(@conn, :delete, @message), method: :delete,
+                            data: [confirm: "Are you sure?"],
+                            class: "text-danger" %>
+        <% end %>
       </small>
     </span>
   </div>

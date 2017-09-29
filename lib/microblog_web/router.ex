@@ -1,5 +1,6 @@
 defmodule MicroblogWeb.Router do
   use MicroblogWeb, :router
+  import MicroblogWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,6 +8,7 @@ defmodule MicroblogWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :set_user
   end
 
   pipeline :api do
@@ -19,10 +21,7 @@ defmodule MicroblogWeb.Router do
     get "/", PageController, :index
     resources "/messages", MessageController, except: [:edit, :update]
     resources "/users", UserController
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :destroy
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", MicroblogWeb do
-  #   pipe_through :api
-  # end
 end

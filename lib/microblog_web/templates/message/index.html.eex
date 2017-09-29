@@ -1,4 +1,10 @@
-<%= render "form.html",  Map.merge(assigns, %{action: message_path(@conn, :create) , rows: 2}) %>
+<%= if @current_user do %>
+  <%= render "form.html",  Map.merge(assigns, %{action: message_path(@conn, :create) , rows: 2}) %>
+<% else %>
+  <div class="alert alert-primary" role="alert">
+    You aren't logged in. To follow users, you have to <%= link "Sign Up", to: user_path(@conn, :new) %>
+  </div>
+<% end %>
 
 <%= for message <- @messages do %>
   <%= render "message.html", Map.put(assigns, :message, message) %>
