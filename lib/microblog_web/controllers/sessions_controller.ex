@@ -20,7 +20,7 @@ defmodule MicroblogWeb.SessionController do
     end
   end
 
-  def destroy(conn, _args) do
+  def delete(conn, _args) do
     conn
     |> put_session(:user_id, nil)
     |> put_flash(:info, "Logged out.")
