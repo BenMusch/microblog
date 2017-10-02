@@ -3,10 +3,20 @@ defmodule MicroblogWeb.MessageController do
 
   alias Microblog.Social
   alias Microblog.Social.Message
+  alias Microblog.Repo
 
   def index(conn, _params) do
     changeset = Social.change_message(%Message{})
-    messages = Social.list_messages()
+
+    messages = []
+    if user_id = get_session(conn, :user_id) do
+      user = Social.get_user!(user_id)
+      user = Repo.preload(user, [:following_follows, :followings, :following_messages])
+      messages = Repo.preload(user.following_messages, :user)
+    else
+      messages = Social.list_messages()
+    end
+
     render(conn, "index.html", messages: messages, changeset: changeset)
   end
 

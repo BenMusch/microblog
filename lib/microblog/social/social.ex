@@ -12,6 +12,11 @@ defmodule Microblog.Social do
     Repo.preload(Repo.all(Message), :user)
   end
 
+  def messages_by_followings(user) do
+    user = Repo.preload(user, [:following_follows, :followings])
+    Repo.preload(Repo.all(Message, user: user.followings), :user)
+  end
+
   def get_message!(id), do: Repo.preload(Repo.get!(Message, id), :user)
 
   def create_message(attrs \\ %{}) do
@@ -62,5 +67,25 @@ defmodule Microblog.Social do
 
   def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  alias Microblog.Social.Follow
+
+  def create_follow(attrs \\ %{}) do
+    %Follow{}
+    |> Follow.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def get_follow(follow_params \\ %{}) do
+    Repo.get_by(Follow, follow_params)
+  end
+
+  def delete_follow(%Follow{} = follow) do
+    Repo.delete(follow)
+  end
+
+  def user_is_following?(user1, user2) do
+    !!Repo.get_by(Follow, following_id: user2.id, follower_id: user1.id)
   end
 end

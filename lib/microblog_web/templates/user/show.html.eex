@@ -2,14 +2,12 @@
   <div class="col-4">
     <div class="card">
       <div class="avatar-container">
-        <img
-            src="https://help.github.com/assets/images/help/profile/identicon.png"
-            alt="avatar"/>
+        <img src="<%= Gravity.image(@user.email) %>" alt="avatar"/>
       </div>
 
       <div class="card-body">
         <%= render "title.html", user: @user, conn: @conn %>
-        <%= render "stats.html" %>
+        <%= render "stats.html", assigns %>
       </div>
     </div>
 

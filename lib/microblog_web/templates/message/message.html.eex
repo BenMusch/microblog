@@ -1,8 +1,7 @@
 <div class="row message item">
   <div class="col-md-1">
     <div class="avatar-container-sm panel">
-      <img src="https://help.github.com/assets/images/help/profile/identicon.png"
-          alt="avatar"/>
+      <img src="<%= Gravity.image(@message.user.email) %>" alt="avatar"/>
     </div>
   </div>
 

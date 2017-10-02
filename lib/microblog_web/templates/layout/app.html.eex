@@ -31,7 +31,7 @@
           <!-- Account links -->
           <ul class="navbar-nav navbar-left">
             <li class="nav-item"><%= link "My Profile", to: user_path(@conn, :show, @current_user), class: "nav-link" %>
-            <li class="nav-item"><%= link("Log Out", to: session_path(@conn, :destroy), method: :delete, class: "nav-link") %>
+            <li class="nav-item"><%= link("Log Out", to: session_path(@conn, :delete), method: :delete, class: "nav-link") %>
           </ul>
         <% else %>
           <%= form_for @conn, session_path(@conn, :create), [as: "user", class: "form-inline navbar-right"], fn f -> %>

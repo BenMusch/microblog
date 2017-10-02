@@ -1,5 +1,22 @@
 <div class="btn-group">
-  <%= link "100 Followers", to: "#", class: "btn btn-light" %>
-  <%= link "54 Following", to: "#", class: "btn btn-light" %>
-  <%= link "Follow", to: "#", class: "btn btn-primary" %>
+  <!-- TODO -->
+  <%# link "100 Followers", to: "#", class: "btn btn-light" %>
+  <%# link "54 Following", to: "#", class: "btn btn-light" %>
+
+  <%= if @current_user && !MicroblogWeb.UserView.users_equal?(@current_user, @user) do %>
+    <%= if Microblog.Social.user_is_following?(@current_user, @user) do %>
+      <%= form_for @conn, follow_path(@conn, :delete), [method: :delete, as: "follow", class: "form-inline"], fn f -> %>
+        <%= hidden_input f, :follower_id, value: @current_user.id %>
+        <%= hidden_input f, :following_id, value: @user.id %>
+        <%= submit "Unfollow", class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <%= form_for @conn, follow_path(@conn, :create), [as: "follow", class: "form-inline"], fn f -> %>
+        <%= hidden_input f, :follower_id, value: @current_user.id %>
+        <%= hidden_input f, :following_id, value: @user.id %>
+        <%= submit "Follow", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+
+  <% end %>
 </div>

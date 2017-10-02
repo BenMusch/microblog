@@ -18,10 +18,14 @@ defmodule MicroblogWeb.Router do
   scope "/", MicroblogWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", MessageController, :index
     resources "/messages", MessageController, except: [:edit, :update]
+    delete "/follows", FollowController, :delete # uses not-quite RESTful routes
+                                                 # so you dont need the id of a
+                                                 # follow to delete it
+    resources "/follows", FollowController, only: [:create]
     resources "/users", UserController
     post "/login", SessionController, :create
-    delete "/logout", SessionController, :destroy
+    delete "/logout", SessionController, :delete
   end
 end
