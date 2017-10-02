@@ -10,6 +10,6 @@
       <%= render "title.html", user: @user, conn: @conn %>
     </div>
 
-    <%= render "stats.html" %>
+    <%= render "stats.html", assigns %>
   </div>
 </div>
