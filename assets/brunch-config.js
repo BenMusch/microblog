@@ -48,6 +48,10 @@ exports.config = {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
     },
+    vue: {
+      extractCSS: true,
+      out: 'priv/static/css/components.css'
+    },
     sass: {
       options: {
         includePaths: ["node_modules/bootstrap/scss"],
@@ -68,7 +72,8 @@ exports.config = {
       $: 'jquery',
       jQuery: 'jquery',
       Popper: 'popper.js',
-      bootstrap: 'bootstrap'
+      bootstrap: 'bootstrap',
+      Vue: 'vue'
     }
   }
 };
