@@ -6,6 +6,7 @@
     "watch": "brunch watch --stdin"
   },
   "dependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
     "bootstrap": "^4.0.0-beta",
     "jquery": "^3.2.1",
     "phoenix": "file:../deps/phoenix",
