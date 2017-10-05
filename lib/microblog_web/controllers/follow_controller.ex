@@ -6,7 +6,7 @@ defmodule MicroblogWeb.FollowController do
 
   def create(conn, %{"follow" => follow_params}) do
     case Social.create_follow(follow_params) do
-      {:ok, follow} ->
+      {:ok, _follow} ->
         IO.puts(follow_params["following_id"])
         following = Social.get_user!(follow_params["following_id"])
         conn

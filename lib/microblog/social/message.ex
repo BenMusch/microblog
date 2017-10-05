@@ -3,11 +3,13 @@ defmodule Microblog.Social.Message do
   import Ecto.Changeset
   alias Microblog.Social.Message
   alias Microblog.Social.User
+  alias Microblog.Social.Like
 
 
   schema "messages" do
     field :content, :string
     belongs_to :user, User
+    has_many :likes, Like
 
     timestamps()
   end

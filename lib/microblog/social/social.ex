@@ -88,4 +88,30 @@ defmodule Microblog.Social do
   def user_is_following?(user1, user2) do
     !!Repo.get_by(Follow, following_id: user2.id, follower_id: user1.id)
   end
+
+  alias Microblog.Social.Like
+
+  def create_like(attrs \\ %{}) do
+    %Like{}
+    |> Like.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def like(user_id, message_id) do
+    create_like(%{"user_id" => user_id, "message_id" =>  message_id})
+  end
+
+  def unlike(user_id, message_id) do
+    like = Repo.get_by(Like, user_id: user_id, message_id: message_id)
+    Repo.delete(like)
+  end
+
+  def user_likes?(user_id, message_id) do
+    !!Repo.get_by(Like, user_id: user_id, message_id: message_id)
+  end
+
+  def num_likes(message_id) do
+    query = from(l in Like, where: l.message_id == ^message_id)
+    Repo.aggregate(query, :count, :id)
+  end
 end

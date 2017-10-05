@@ -28,4 +28,13 @@ defmodule MicroblogWeb.Router do
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
   end
+
+  scope "/api", MicroblogWeb do
+    pipe_through :api
+
+    resources "/likes", LikeController, only: [:create]
+    delete "/likes", LikeController, :delete # uses not-quite RESTful routes
+                                              # so you dont need the id of a
+                                              # follow to delete it
+  end
 end
