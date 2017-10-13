@@ -20,3 +20,10 @@ env:
   global:
     - MIX_ENV=test
     - secure: hShw+XPj8cSqKp/lehNjvzVeaw9wiSxVEXfoLLOAZnz0ISDwz4oas3yRIUEAyhuI0+80q3XwCglATMoAcg2BbfRNYiIpS/DzWphJD7LB3EWyLTzT/x3hCl4yCKynEto9NZ/TkaUptFl5k+Z3mW5OPe3HN+MCoin4MPT6Z+u5cmNByae4KBIKdxXDUeS60YAmlmqPRSL152DkjOx/sWDPzPwWbf8WlCeJYAKTP3zw1evtr/r6ObRivtfnlVHbFtdBdLr5q11KfDwIM7Yg4glDJr7J9zDaaMx2DlTd92K1tlgiGOkMDAkls/rac6X7/Lp9POm0LOe6ueIESL0uScbO0bh3sqTdHAUA6E9FKDcgKJ1zZPmyvg5DUhe3lObVWcEftzDJfi7Y/Ab2FWi3W7jgAOQCvQa/U3vSGQ6ZW7aBfqmk4diyYnJ2T2wXSwWHF2squP08CeQSs4Mq6tSjSUgGxQeSvD0dCVx5xETiV4e8Ik7xkK6UcHFro3bnMdgzMd/S/01nbtoXV5kGhlqLALEyo2fSaOdU7DFjoXYbLrRki6VTHtsS35S57yv3/jnyk7BsCkqHvcrLfD+WxAl/spVIm1veBLlLsufUcBMCs50WOr1SK0Ip+GVplO3Rrz+7LGwTzVNPkqayYPlCEj/z0JkpfNUtfP+ZVwv+t1GpojSr8AY=
+notifications:
+  email:
+    recipients:
+      - benmuschol@gmail.com
+    branch: master
+    on_failure: always
+    on_success: always
