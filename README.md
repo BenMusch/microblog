@@ -1,5 +1,7 @@
 # Microblog
 
+[![Build Status](https://travis-ci.org/BenMusch/microblog.svg?branch=master)](https://travis-ci.org/BenMusch/microblog)
+
 This is a twitter-like application developed for CS4550
 
 GitHub: [benmusch/microblog](https://github.com/benmusch/microblog)

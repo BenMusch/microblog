@@ -1,18 +1,26 @@
 #! /bin/bash
 set -e
 
+echo 'Setting env...'
 export MIX_ENV=prod
 
-sshpass -p $PASSWORD scp ben@benmuschol.com:~/www/microblog-config/prod.secret.exs ./config/prod.secret.exs
+echo 'Copying config from server...'
+sshpass -p $PASSWORD scp -o StrictHostKeyChecking=no ben@$IP:~/www/microblog-config/prod.secret.exs ./config/prod.secret.exs
 
 # create release
+echo 'Compiling assets...'
 cd assets
 npm install
 ./node_modules/brunch/bin/brunch b -p
 cd ..
 yes | mix phx.digest
+echo 'Creating release...'
 yes | mix release --env=prod
 
-sshpass -p $PASSWORD scp _build/prod/rel/microblog/releases/0.0.1/microblog.tar.gz ben@benmuschol.com:~/www/microblog
-sshpass -p $PASSWORD ssh ben@benmuschol.com \
+echo 'Installing release on server...'
+sshpass -p $PASSWORD scp -o StrictHostKeyChecking=no \
+  _build/prod/rel/microblog/releases/0.0.1/microblog.tar.gz ben@$IP:~/www/microblog
+sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no ben@$IP \
   'cd ~/www/microblog; tar xzvf microblog.tar.gz; export PORT=8000; ./bin/microblog migrate; ./bin/microblog restart'
+
+echo 'Deploy complete!'
