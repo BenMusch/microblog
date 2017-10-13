@@ -3,7 +3,7 @@ set -e
 
 export MIX_ENV=prod
 
-sshpass -p $PASSWORD scp ben@$SERVER_IP:~/www/microblog-config/prod.secret.exs ./config/prod.secret.exs
+sshpass -p $PASSWORD scp ben@benmuschol.com:~/www/microblog-config/prod.secret.exs ./config/prod.secret.exs
 
 # create release
 cd assets
@@ -13,6 +13,6 @@ cd ..
 yes | mix phx.digest
 yes | mix release --env=prod
 
-sshpass -p $PASSWORD scp _build/prod/rel/microblog/releases/0.0.1/microblog.tar.gz ben@$SERVER_IP:~/www/microblog
-sshpass -p $PASSWORD ssh ben@$SERVER_IP \
+sshpass -p $PASSWORD scp _build/prod/rel/microblog/releases/0.0.1/microblog.tar.gz ben@benmuschol.com:~/www/microblog
+sshpass -p $PASSWORD ssh ben@benmuschol.com \
   'cd ~/www/microblog; tar xzvf microblog.tar.gz; export PORT=8000; ./bin/microblog migrate; ./bin/microblog restart'
