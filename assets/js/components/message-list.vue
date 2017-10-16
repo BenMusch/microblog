@@ -26,7 +26,7 @@
 
           <small>
             <a :href="message.path">{{ message.createdAt }}</a>
-            <a data-confirm="Are you sure?" data-csrf="csrfToken"
+            <a data-confirm="Are you sure?" :data-csrf="csrfToken"
               data-method="delete" :data-to="message.path" href="#"
               rel="nofollow" class="text-danger"
               v-if="message.userId == currentUserId">Delete</a>
