@@ -1,5 +1,7 @@
 <%= render "form.html",  Map.merge(assigns, %{action: message_path(@conn, :create) , rows: 2}) %>
 
-<%= for message <- @messages do %>
-  <%= render "message.html", Map.put(assigns, :message, message) %>
-<% end %>
+<message-list
+  :current-user-id="<%= @current_user && @current_user.id %>"
+  :initial-data="<%= MicroblogWeb.MessageView.encode_messages(@conn, @messages, @current_user) %>"
+  csrf-token="<%= Plug.CSRFProtection.get_csrf_token() %>"
+/>

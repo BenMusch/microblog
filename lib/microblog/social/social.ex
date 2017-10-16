@@ -106,12 +106,12 @@ defmodule Microblog.Social do
     Repo.delete(like)
   end
 
-  def user_likes?(user_id, message_id) do
-    !!Repo.get_by(Like, user_id: user_id, message_id: message_id)
+  def user_likes?(user, message) do
+    user && !!Repo.get_by(Like, user_id: user.id, message_id: message.id)
   end
 
-  def num_likes(message_id) do
-    query = from(l in Like, where: l.message_id == ^message_id)
+  def num_likes(message) do
+    query = from(l in Like, where: l.message_id == ^message.id)
     Repo.aggregate(query, :count, :id)
   end
 end

@@ -1,4 +1,5 @@
 import "phoenix_html"
+import MessageList from "./components/message-list.vue"
 import Like from "./components/like.vue"
 
 /*
@@ -9,6 +10,7 @@ JSON.stringify("hello")
 
 window.vms = new Vue({
   components: {
-    'like-btn': Like
+    'message-list': MessageList,
+    'like-btn': Like,
   }
 }).$mount('#app-container')

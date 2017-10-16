@@ -11,8 +11,8 @@
     <like-btn
       :user-id="<%= !!@current_user && @current_user.id %>"
       :message-id="<%= @message.id %>"
-      :liked="<%= !!@current_user && Microblog.Social.user_likes?(@current_user.id, @message.id) %>"
-      :count="<%= Microblog.Social.num_likes(@message.id) %>"
+      :liked="<%= !!@current_user && Microblog.Social.user_likes?(@current_user, @message) %>"
+      :count="<%= Microblog.Social.num_likes(@message) %>"
       target-url="<%= like_path(@conn, :create) %>">
     </like-btn>
 
