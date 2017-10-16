@@ -1,1 +1,5 @@
-<%= render "message.html", Map.put(assigns, :message, @message) %>
+<message-list
+  :current-user-id="<%= @current_user && @current_user.id %>"
+  :initial-data="<%= MicroblogWeb.MessageView.encode_messages(@conn, [@message], @current_user) %>"
+  csrf-token="<%= Plug.CSRFProtection.get_csrf_token() %>"
+/>
