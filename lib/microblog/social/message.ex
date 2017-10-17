@@ -9,7 +9,7 @@ defmodule Microblog.Social.Message do
   schema "messages" do
     field :content, :string
     belongs_to :user, User
-    has_many :likes, Like
+    has_many :likes, Like, on_delete: :delete_all
 
     timestamps()
   end

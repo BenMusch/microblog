@@ -1,4 +1,5 @@
 import "phoenix_html"
+import socket from "./socket"
 import MessageList from "./components/message-list.vue"
 import Like from "./components/like.vue"
 

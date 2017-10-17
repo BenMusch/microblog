@@ -27,6 +27,10 @@ defmodule MicroblogWeb.MessageController do
   def create(conn, %{"message" => message_params}) do
     case Social.create_message(message_params) do
       {:ok, message} ->
+        message = Repo.preload(message, :user)
+        json = MicroblogWeb.MessageView.message_json(conn, message)
+        MicroblogWeb.Endpoint.broadcast!("updates:all", "message", json)
+
         conn
         |> put_flash(:info, "Message created successfully.")
         |> redirect(to: message_path(conn, :show, message))

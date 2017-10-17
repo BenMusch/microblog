@@ -10,15 +10,15 @@ defmodule Microblog.Social.User do
     field :handle, :string
     field :human_name, :string
 
-    has_many :messages, Message
+    has_many :messages, Message, on_delete: :delete_all
     # The follows where the follower is this user
     # In other words, this user is following the user associated through this
     # follow
-    has_many :following_follows, Follow, foreign_key: :follower_id
+    has_many :following_follows, Follow, foreign_key: :follower_id, on_delete: :delete_all
     # The follows where the following is this user
     # In other words, this user is followed by the user associated through this
     # follow
-    has_many :follower_follows, Follow, foreign_key: :following_id
+    has_many :follower_follows, Follow, foreign_key: :following_id, on_delete: :delete_all
 
     # Ths users that follow this user
     has_many :followers, through: [:follower_follows, :follower]

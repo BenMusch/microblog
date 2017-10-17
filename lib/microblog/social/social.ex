@@ -25,12 +25,6 @@ defmodule Microblog.Social do
     |> Repo.insert()
   end
 
-  def update_message(%Message{} = message, attrs) do
-    message
-    |> Message.changeset(attrs)
-    |> Repo.update()
-  end
-
   def delete_message(%Message{} = message) do
     Repo.delete(message)
   end

@@ -1,6 +1,6 @@
 <template>
   <div class="message-list">
-    <div v-for="message in messages" class="row message item" :id="'message-' + message.id">
+    <div v-for="message in sortedMessages" class="row message item" :key="message.id" :id="'message-' + message.id">
       <div class="col-md-1">
         <div class="avatar-container-sm panel">
           <img :src="message.avatarUrl" alt="avatar"/>
@@ -39,15 +39,32 @@
 
 <script>
 import Like from "./like.vue"
+import {EventBus} from "../event-bus"
 export default {
   name: 'message-list',
-  props: ['initialData', 'currentUserId', 'csrfToken'],
+  props: ['initialData', 'currentUserId', 'csrfToken', 'liveUpdates'],
   components: {
     'like-btn': Like
   },
   data() {
     return {
       messages: this.initialData
+    }
+  },
+  mounted() {
+    if (this.liveUpdates)
+      EventBus.$on("message:add", msg => this.addMessage(msg))
+  },
+
+  computed: {
+    sortedMessages() {
+      return this.messages.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+    }
+  },
+
+  methods: {
+    addMessage(message) {
+      this.messages = this.messages.concat(message)
     }
   }
 }
