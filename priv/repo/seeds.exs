@@ -19,6 +19,6 @@ user3 = Repo.insert!(user3)
 
 Repo.insert!(%Message{content: "Buy my new book Robot Proof on Amazon.com!",
   user_id: user2.id})
-Repo.insert!(%Message{content: "I can't believe Phoenix supports emoji out-of-the 📦",
+Repo.insert!(%Message{content: "My front-end doesn't support emoji :(",
   user_id: user1.id})
 Repo.insert!(%Message{content: "I am a block of granite.", user_id: user3.id})
