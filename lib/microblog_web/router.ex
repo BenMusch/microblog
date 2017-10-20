@@ -1,7 +1,6 @@
 defmodule MicroblogWeb.Router do
   use MicroblogWeb, :router
   use Coherence.Router
-  import MicroblogWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -9,7 +8,6 @@ defmodule MicroblogWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :set_user
     plug Coherence.Authentication.Session
   end
 
