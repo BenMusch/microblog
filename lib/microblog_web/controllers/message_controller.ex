@@ -27,8 +27,14 @@ defmodule MicroblogWeb.MessageController do
     case Social.create_message(message_params) do
       {:ok, message} ->
         message = Repo.preload(message, :user)
+        user = Repo.preload(message.user, :followers)
         json = MicroblogWeb.MessageView.message_json(conn, message)
+
         MicroblogWeb.Endpoint.broadcast!("updates:all", "message", json)
+        Enum.each(
+          user.followers,
+          fn(u) -> MicroblogWeb.Endpoint.broadcast!("updates:#{u.id}", "message", json) end
+        )
 
         conn
         |> put_flash(:info, "Message created successfully.")

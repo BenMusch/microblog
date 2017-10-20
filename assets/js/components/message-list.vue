@@ -39,10 +39,11 @@
 
 <script>
 import Like from "./like.vue"
+import socket from "../socket"
 import {EventBus} from "../event-bus"
 export default {
   name: 'message-list',
-  props: ['initialData', 'currentUserId', 'csrfToken', 'liveUpdates'],
+  props: ['initialData', 'currentUserId', 'csrfToken', 'updatesTopic'],
   components: {
     'like-btn': Like
   },
@@ -52,8 +53,10 @@ export default {
     }
   },
   mounted() {
-    if (this.liveUpdates)
+    if (this.updatesTopic) {
+      socket.subscribeToMessages(this.updatesTopic)
       EventBus.$on("message:add", msg => this.addMessage(msg))
+    }
   },
 
   computed: {
