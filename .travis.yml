@@ -19,6 +19,6 @@ deploy:
   provider: script
   script: "./bin/deploy"
   on:
-    branch: master
+    branch: prod
 notifications:
   email: false
