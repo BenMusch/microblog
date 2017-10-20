@@ -1,6 +1,9 @@
 defmodule Microblog.Social.User do
   use Ecto.Schema
+  use Coherence.Schema
+
   import Ecto.Changeset
+
   alias Microblog.Social.User
   alias Microblog.Social.Message
   alias Microblog.Social.Follow
@@ -9,6 +12,7 @@ defmodule Microblog.Social.User do
     field :email, :string
     field :handle, :string
     field :human_name, :string
+    coherence_schema()
 
     has_many :messages, Message, on_delete: :delete_all
     # The follows where the follower is this user
@@ -19,12 +23,10 @@ defmodule Microblog.Social.User do
     # In other words, this user is followed by the user associated through this
     # follow
     has_many :follower_follows, Follow, foreign_key: :following_id, on_delete: :delete_all
-
     # Ths users that follow this user
     has_many :followers, through: [:follower_follows, :follower]
     # Ths users this user is following
     has_many :followings, through: [:following_follows, :following]
-
     has_many :following_messages, through: [:followings, :messages]
 
     timestamps()
@@ -33,7 +35,8 @@ defmodule Microblog.Social.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:human_name, :handle,:email])
+    |> cast(attrs, [:human_name, :handle, :email, :password, :password_confirmation])
     |> validate_required([:human_name, :handle, :email])
+    |> validate_coherence(attrs)
   end
 end

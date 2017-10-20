@@ -20,7 +20,7 @@ defmodule Microblog.Mixfile do
   def application do
     [
       mod: {Microblog.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :coherence]
     ]
   end
 
@@ -42,7 +42,8 @@ defmodule Microblog.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:distillery, "~> 1.4", runtime: false},
-      {:gravity, "~> 1.0.0"}
+      {:gravity, "~> 1.0.0"},
+      {:coherence, "~> 0.5"}
     ]
   end
 

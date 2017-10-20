@@ -1,5 +1,6 @@
 defmodule MicroblogWeb.Router do
   use MicroblogWeb, :router
+  use Coherence.Router
   import MicroblogWeb.Plugs
 
   pipeline :browser do
@@ -9,6 +10,12 @@ defmodule MicroblogWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :set_user
+    plug Coherence.Authentication.Session
+  end
+
+  scope "/" do
+    pipe_through :browser
+    coherence_routes()
   end
 
   pipeline :api do
@@ -25,8 +32,8 @@ defmodule MicroblogWeb.Router do
                                                  # follow to delete it
     resources "/follows", FollowController, only: [:create]
     resources "/users", UserController
-    post "/login", SessionController, :create
-    delete "/logout", SessionController, :delete
+    post "/login", Coherence.SessionController, :create
+    delete "/logout", Coherence.SessionController, :delete
   end
 
   scope "/api", MicroblogWeb do

@@ -34,9 +34,10 @@
             <li class="nav-item"><%= link("Log Out", to: session_path(@conn, :delete), method: :delete, class: "nav-link") %>
           </ul>
         <% else %>
-          <%= form_for @conn, session_path(@conn, :create), [as: "user", class: "form-inline navbar-right"], fn f -> %>
-            <input type="text" placeholder="Username" class="form-control mr-sm-2" name="username">
-            <input type="submit" value="Log In" class="btn btn-outline-primary my-2 my-sm-0">
+          <%= form_for @conn, session_path(@conn, :create), [as: "session", class: "form-inline navbar-right"], fn f -> %>
+            <%= text_input f, :handle, class: "form-control mr-sm-2", placeholder: "Username" %>
+            <%= password_input f, :password, class: "form-control mr-sm-2", placeholder: "Password" %>
+            <%= submit "Log in", class: "btn btn-outline-primary my-2 my-sm-0" %>
           <% end %>
         <% end %>
       </div>
