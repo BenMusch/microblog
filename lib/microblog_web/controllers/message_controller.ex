@@ -8,8 +8,7 @@ defmodule MicroblogWeb.MessageController do
   def index(conn, _params) do
     changeset = Social.change_message(%Message{})
 
-    if user_id = get_session(conn, :user_id) do
-      user = Social.get_user!(user_id)
+    if user = Coherence.current_user(conn) do
       user = Repo.preload(user, [:following_follows, :followings, :following_messages])
       messages = Repo.preload(user.following_messages, :user)
     else
