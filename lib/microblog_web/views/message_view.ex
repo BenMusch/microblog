@@ -3,7 +3,7 @@ defmodule MicroblogWeb.MessageView do
 
   def message_json(conn, message, current_user \\ nil) do
     url = message_path(conn, :delete, message)
-    user_url = user_path(conn, :show, 1)
+    user_url = user_path(conn, :show, message.user.id)
     %{
       "user" => %{
         "id" => message.user.id,
