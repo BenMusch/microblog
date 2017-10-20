@@ -51,6 +51,7 @@ exports.config = {
       Popper: 'popper.js',
       bootstrap: 'bootstrap',
       Vue: 'vue/dist/vue.common.js',
+      markdown: 'markdown'
     }
   }
 };

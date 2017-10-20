@@ -8,7 +8,7 @@
       </div>
 
       <div class="col-md-11 content">
-        <p>{{ message.content }}</p>
+        <div v-html="messageHTML(message)"></div>
 
         <like-btn
            :user-id="currentUserId"
@@ -68,6 +68,10 @@ export default {
   methods: {
     addMessage(message) {
       this.messages = this.messages.concat(message)
+    },
+
+    messageHTML(message) {
+      return markdown.markdown.toHTML(message.content)
     }
   }
 }
