@@ -39,6 +39,16 @@ defmodule Microblog.Social do
     Repo.all(User)
   end
 
+  def search_users(q) do
+    q = String.trim(q)
+    if q != "" do
+      q = "%#{q}%"
+      Repo.all(from u in User, where: ilike(u.handle, ^q) or ilike(u.human_name, ^q))
+    else
+      []
+    end
+  end
+
   def get_user!(id), do: Repo.get!(User, id)
 
   def get_user_by_username(username), do: Repo.get_by(User, handle: username)

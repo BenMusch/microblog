@@ -1,12 +1,17 @@
 defmodule MicroblogWeb.UserController do
   use MicroblogWeb, :controller
+  require Logger
 
   alias Microblog.Social
   alias Microblog.Social.User
   alias Microblog.Repo
 
-  def index(conn, _params) do
-    users = Social.list_users()
+  def index(conn, params) do
+    if params["q"] do
+      users = Social.search_users(params["q"])
+    else
+      users = Social.list_users()
+    end
     render(conn, "index.html", users: users)
   end
 

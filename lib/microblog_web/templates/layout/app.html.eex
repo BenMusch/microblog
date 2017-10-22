@@ -26,8 +26,15 @@
           <% end %>
         </ul>
 
+        <!-- User search -->
+        <form method="GET" action="<%= user_path(@conn, :index) %>" class="form-inline navbar-right">
+          <input type="text" name="q" placeholder="Search for a user..." class="form-control mr-sm-2"/>
+          <input type="submit" value="Search" class="btn btn-outline-primary my-2 my-sm-0"/>
+        </form>
+
 
         <%= if @current_user do %>
+
           <!-- Account links -->
           <ul class="navbar-nav navbar-left">
             <li class="nav-item"><%= link "My Profile", to: user_path(@conn, :show, @current_user), class: "nav-link" %>
