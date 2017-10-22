@@ -38,19 +38,26 @@ No
 
 7. What changes did you make to clean up your application layout and navigation?
 
-No
+Added the ability to search for users
 
 
 8. Did you complete any catch up tasks? Which ones? Is there anything still not working
    about those features?
 
-No
+Live updates: Fixed it to support the "updates:user_id" channels for
+logged-in users
 
 
 9. Did you complete any additional tasks? Which ones? For each, describe how it should
    work and how that differs from your deployed functionality.
 
-No
+ 1. Markdown support. Any message that uses markdown formatting is
+ displayed in that style when posted.
+ 2. HTTPS support. I used Let's Encrypt and NGINX to force all
+ requests to go through https
+ 3. User search. There is now an ability to search for users. The
+ query will perform a case insensitive search over the username and
+ their human name.
 
 
 A. Did you complete any bonus addtional goals for extra credit? For each, describe how
@@ -61,10 +68,8 @@ No
 
 B. Is there any other useful information that you want to provide for grading?
 
-This is an early submission to explain how to log-in/out when grading hw06.
-
-If you were already logged in to my website: Clear your cookies for microblog.benmuschol.com. The old logout endpoint will not work.
-
-All users have the password “password”
-
+All users created prior to this submission have the password
+“password”. If you were logged in prior to this submission, the logout
+won't work. You have to clear the cookies for my web site. After
+that, you should be able to log in/out successfully.
 
