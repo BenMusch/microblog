@@ -1,0 +1,16 @@
+; <<>> DiG 9.8.3-P1 <<>> glyn.fun
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 34959
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;glyn.fun.			IN	A
+
+;; ANSWER SECTION:
+glyn.fun.		76078	IN	A	207.148.19.32
+
+;; Query time: 3 msec
+;; SERVER: 129.10.24.200#53(129.10.24.200)
+;; WHEN: Fri Jan 12 12:38:49 2018
+;; MSG SIZE  rcvd: 42
